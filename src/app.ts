@@ -4,15 +4,20 @@ import * as path from "path";
 import * as cors from "cors";
 
 import { errorHandler, errorNotFoundHandler } from "./middlewares/errorHandler";
-import { attachCORSResponse } from './middlewares/proxyCORS';
 
 // Routes
 import { index } from "./routes/index";
+
 // Create Express server
 export const app = express();
 
 /**
  * @TODO Add more details such such as whitelists, methods options, etc
+ * 
+ * All this middleware is doing is the following so browser can match that 
+ * origin (*) and accept the response
+ *      res.header('Access-Control-Allow-Origin', '*');
+ *      next(); 
  */
 app.use(cors());
 
@@ -21,11 +26,7 @@ app.set("port", process.env.PORT || 3030);
 
 app.use(logger("dev"));
 
-// No Template Engine is Defined
-// app.use(express.static(path.join(__dirname, "../public")));
-
-// Attach CORS response
-app.use(attachCORSResponse);
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/", index);
 
