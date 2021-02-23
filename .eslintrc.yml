@@ -1,0 +1,43 @@
+---
+# Style configuration
+extends:
+  - airbnb-base
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:import/typescript
+  - prettier
+  - plugin:@typescript-eslint/recommended
+
+plugins:
+  - "@typescript-eslint/eslint-plugin"
+  - import
+
+rules:
+  # Disable this rule; import = is bad anyways
+  "@typescript-eslint/no-var-requires": off
+
+  # Configure required extensions
+  import/extensions:
+    - warn
+    - ts: never
+
+  # Too pedantic / sometimes encourages Express anti-patterns
+  import/prefer-default-export: off
+  no-console: 0
+
+# ESLint Project Settings
+settings:
+  react:
+    version: detect
+  import/parsers:
+    "@typescript-eslint/parser":
+      - ".ts"
+env:
+  es6: true
+  node: true
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 2020
+  sourceType: module
+  ecmaFeatures:
+    modules: true

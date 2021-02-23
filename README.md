@@ -1,7 +1,7 @@
 # GT Scheduler Backend
 
 > Express API server used to augment the functionality provided in the GT scheduler website/crawler.
- 
+
 ## 📃 License & Copyright Notice
 
 This repository has been created as a part of the ongoing development of the GT Scheduler project, which was [originally created by Jinseo Park](https://github.com/64json/gt-scheduler).
@@ -46,6 +46,36 @@ yarn start
 ```
 
 The API should be online and serving at `http://localhost:3030`
+
+### Linting / formatting
+
+To lint the project via ESLint, run:
+
+```
+yarn run lint
+```
+
+To fix any automatically-fixable lints, instead run:
+
+```
+yarn run lint:fix
+```
+
+Finally, to run Prettier and automatically format the files, run:
+
+```
+yarn run format
+```
+
+### Running while developing
+
+The following command will run the server and automatically re-build the backend if any of the source files change.
+
+```
+yarn run watch-debug
+```
+
+Similar to `yarn start`, the API should be online and serving at `http://localhost:3030`
 
 ### Using the debugger in VS Code
 
