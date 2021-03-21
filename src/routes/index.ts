@@ -9,4 +9,4 @@ export const index = Router();
 
 index.route("/proxy/class_section").get(ClassSectionProxy);
 
-index.route("/airtable").post(formValidation, AirTablePost);
+index.route("/feedback").post(formValidation, AirTablePost);
