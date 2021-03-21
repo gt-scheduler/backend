@@ -47,6 +47,10 @@ yarn start
 
 The API should be online and serving at `http://localhost:3030`
 
+#### Adding Airtable API integration
+
+To connect with Airtable, obtain a valid API key and base, and rename .env.example to .env, replacing the values within with your own.
+
 ### Linting / formatting
 
 To lint the project via ESLint, run:
