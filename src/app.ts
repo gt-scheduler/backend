@@ -1,8 +1,10 @@
-import * as express from "express";
-import * as logger from "morgan";
+import express from "express";
+import logger from "morgan";
 import * as path from "path";
-import * as cors from "cors";
+import cors from "cors";
+import { errors } from "celebrate";
 
+// Middlewares
 import { errorHandler, errorNotFoundHandler } from "./middlewares/errorHandler";
 
 // Routes
@@ -10,6 +12,9 @@ import { index } from "./routes/index";
 
 // Create Express server
 export const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 /**
  * @TODO Add more details such such as whitelists, methods options, etc
@@ -29,5 +34,6 @@ app.disable("etag");
 app.use("/", index);
 app.use("/", express.static(path.join(__dirname, "../public")));
 
+app.use(errors());
 app.use(errorNotFoundHandler);
 app.use(errorHandler);
