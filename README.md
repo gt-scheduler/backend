@@ -2,6 +2,8 @@
 
 > Express API server used to augment the functionality provided in the GT scheduler website/crawler.
 
+To report a bug or request a new feature, please [create a new Issue in the GT Scheduler website repository](https://github.com/gt-scheduler/website/issues/new/choose).
+
 ## 📃 License & Copyright Notice
 
 This repository has been created as a part of the ongoing development of the GT Scheduler project, which was [originally created by Jinseo Park](https://github.com/64json/gt-scheduler).
