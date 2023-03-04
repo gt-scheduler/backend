@@ -16,7 +16,7 @@ export const ClassSectionProxy = async (
   }
 
   try {
-    const url = `https://oscar.gatech.edu/pls/bprod/bwckschd.p_disp_detail_sched?term_in=${term}&crn_in=${crn}`;
+    const url = `https://registration.banner.gatech.edu/StudentRegistrationSsb/ssb/searchResults/getEnrollmentInfo?term=${term}&courseReferenceNumber=${crn}`;
     const upstreamRes = await axios.get(url);
     res.setHeader("Last-Modified", new Date().toUTCString());
     return res.status(upstreamRes.status).send(upstreamRes.data);
