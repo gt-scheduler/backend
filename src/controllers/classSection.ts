@@ -16,10 +16,24 @@ export const ClassSectionProxy = async (
   }
 
   try {
-    const url = `https://registration.banner.gatech.edu/StudentRegistrationSsb/ssb/searchResults/getEnrollmentInfo?term=${term}&courseReferenceNumber=${crn}`;
-    const upstreamRes = await axios.get(url);
+    const enrollmentInfoUrl = `https://registration.banner.gatech.edu/StudentRegistrationSsb/ssb/searchResults/getEnrollmentInfo?term=${term}&courseReferenceNumber=${crn}`;
+    const enrollmentInfoRes = await axios.get(enrollmentInfoUrl);
+    const restrictionsUrl = `https://registration.banner.gatech.edu/StudentRegistrationSsb/ssb/searchResults/getRestrictions?term=${term}&courseReferenceNumber=${crn}`;
+    const restrictionsRes = await axios.get(restrictionsUrl);
+    const html = `
+      <html>
+        <head>
+          <title>Class Section</title>
+        </head>
+        <body>
+          ${enrollmentInfoRes.data}
+          <hr/>
+          ${restrictionsRes.data}
+        </body>
+      </html>
+    `;
     res.setHeader("Last-Modified", new Date().toUTCString());
-    return res.status(upstreamRes.status).send(upstreamRes.data);
+    return res.status(enrollmentInfoRes.status).send(html);
   } catch (err) {
     return res.status(502).send({ message: err.message });
   }
